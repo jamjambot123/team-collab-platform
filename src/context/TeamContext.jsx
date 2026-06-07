@@ -4,10 +4,10 @@ import toast from 'react-hot-toast';
 const TeamContext = createContext();
 
 const initialMembers = [
-  { id: 'm1', name: '김동원', role: '팀장/기획', color: 'var(--primary)', skills: { planning: 90, dev: 40, design: 60, comm: 95, research: 80 } },
-  { id: 'm2', name: '이민수', role: '개발', color: 'var(--secondary)', skills: { planning: 50, dev: 95, design: 40, comm: 70, research: 60 } },
-  { id: 'm3', name: '박지원', role: '디자인', color: 'var(--success)', skills: { planning: 70, dev: 20, design: 95, comm: 85, research: 50 } },
-  { id: 'm4', name: '최유나', role: '자료조사', color: 'var(--warning)', skills: { planning: 60, dev: 10, design: 50, comm: 80, research: 95 } },
+  { id: 'm1', name: '김동원', role: '조장 / 발표', color: 'var(--primary)', skills: { planning: 90, dev: 40, design: 60, comm: 95, research: 80 } },
+  { id: 'm2', name: '이민수', role: '자료조사 / 기획', color: 'var(--secondary)', skills: { planning: 50, dev: 95, design: 40, comm: 70, research: 60 } },
+  { id: 'm3', name: '박지원', role: 'PPT 제작 / 디자인', color: 'var(--success)', skills: { planning: 70, dev: 20, design: 95, comm: 85, research: 50 } },
+  { id: 'm4', name: '최유나', role: '보고서 작성 / 서기', color: 'var(--warning)', skills: { planning: 60, dev: 10, design: 50, comm: 80, research: 95 } },
 ];
 
 const initialTasks = [
