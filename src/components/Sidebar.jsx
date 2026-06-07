@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Calendar, Users, FileText, PieChart, Settings } from 'lucide-react';
+import { LayoutDashboard, Calendar, Users, FileText, PieChart, Settings, X } from 'lucide-react';
 import './Sidebar.css';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onClose }) => {
   const navItems = [
     { name: '대시보드', path: '/app/dashboard', icon: <LayoutDashboard size={20} /> },
     { name: '일정 관리', path: '/app/schedule', icon: <Calendar size={20} /> },
@@ -13,12 +13,17 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
-        <div className="logo-icon">
-          <span className="logo-text">C</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div className="logo-icon">
+            <span className="logo-text">C</span>
+          </div>
+          <h1 className="logo-title">CollabHub</h1>
         </div>
-        <h1 className="logo-title">CollabHub</h1>
+        <button className="mobile-close-btn" onClick={onClose}>
+          <X size={24} />
+        </button>
       </div>
       
       <nav className="sidebar-nav">

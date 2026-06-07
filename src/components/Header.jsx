@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Bell, Search, LogOut, MessageCircle, CheckSquare, FileText } from 'lucide-react';
+import { Bell, Search, LogOut, MessageCircle, CheckSquare, FileText, Menu } from 'lucide-react';
 import { useTeam } from '../context/TeamContext';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
-const Header = ({ onOpenChat }) => {
+const Header = ({ onOpenChat, onToggleMenu }) => {
   const { currentUser, logout, notifications, markNotificationsRead, tasks, files } = useTeam();
   const navigate = useNavigate();
   const [showNoti, setShowNoti] = useState(false);
@@ -42,7 +42,11 @@ const Header = ({ onOpenChat }) => {
 
   return (
     <header className="header">
-      <div className="search-bar" ref={searchRef} style={{ position: 'relative' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <button className="mobile-menu-btn" onClick={onToggleMenu}>
+          <Menu size={24} color="var(--text-primary)" />
+        </button>
+        <div className="search-bar" ref={searchRef} style={{ position: 'relative' }}>
         <Search size={18} className="search-icon" />
         <input 
           type="text" 
@@ -93,6 +97,7 @@ const Header = ({ onOpenChat }) => {
             )}
           </div>
         )}
+      </div>
       </div>
 
       <div className="header-actions">
