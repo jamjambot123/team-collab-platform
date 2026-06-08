@@ -239,7 +239,7 @@ const InstructorDashboard = () => {
               )}
 
               <button style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#F8FAFC', padding: '0.75rem', borderRadius: '8px', marginTop: '1.5rem', fontSize: '0.9rem', transition: 'background 0.2s', cursor: 'pointer' }} onMouseOver={e=>e.currentTarget.style.background='rgba(255,255,255,0.1)'} onMouseOut={e=>e.currentTarget.style.background='rgba(255,255,255,0.05)'}>
-                대시보드 염탐하기 (권한: 교수)
+                해당 팀 상세 모니터링 (관리자 권한)
               </button>
             </div>
           ))}
