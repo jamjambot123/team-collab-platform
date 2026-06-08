@@ -4,7 +4,7 @@ import { useTeam } from '../context/TeamContext';
 import toast from 'react-hot-toast';
 
 const Settings = () => {
-  const { currentUser, updateProfile } = useTeam();
+  const { currentUser, updateProfile, isPremium, upgradeToPremium } = useTeam();
   const [activeTab, setActiveTab] = useState('profile');
 
   // Profile Form State
@@ -29,6 +29,7 @@ const Settings = () => {
   };
 
   const handleUpgrade = () => {
+    upgradeToPremium();
     setShowUpgradeModal(false);
     toast.success('결제가 완료되었습니다. 프리미엄 혜택이 적용됩니다!', { style: { background: 'var(--bg-surface)', color: 'var(--text-primary)', border: '1px solid var(--border-color)' } });
   };
@@ -105,15 +106,19 @@ const Settings = () => {
             <div className="card animate-fade-in">
               <h2 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1.5rem' }}>구독 관리</h2>
               
-              <div style={{ background: 'rgba(139, 92, 246, 0.1)', border: '1px solid var(--primary)', borderRadius: 'var(--radius-md)', padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+              <div style={{ background: isPremium ? 'rgba(139, 92, 246, 0.1)' : 'rgba(255, 255, 255, 0.05)', border: isPremium ? '1px solid var(--primary)' : '1px solid var(--border-color)', borderRadius: 'var(--radius-md)', padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                    <Star size={20} color="var(--warning)" />
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--primary)' }}>Pro 플랜 이용 중</h3>
+                    {isPremium && <Star size={20} color="var(--warning)" />}
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: '600', color: isPremium ? 'var(--primary)' : 'var(--text-primary)' }}>
+                      {isPremium ? 'Pro 플랜 이용 중' : 'Free 플랜 이용 중'}
+                    </h3>
                   </div>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>다음 결제일은 2026년 11월 15일 입니다. (₩9,900)</p>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+                    {isPremium ? '다음 결제일은 2026년 11월 15일 입니다. (₩9,900)' : '팀원 수 및 일부 기능이 제한됩니다.'}
+                  </p>
                 </div>
-                <button className="btn btn-primary" onClick={() => setShowUpgradeModal(true)}>플랜 업그레이드</button>
+                {!isPremium && <button className="btn btn-primary" onClick={() => setShowUpgradeModal(true)}>플랜 업그레이드</button>}
               </div>
 
               <h3 style={{ fontSize: '1rem', fontWeight: '600', marginBottom: '1rem' }}>결제 수단</h3>

@@ -117,6 +117,12 @@ export const TeamProvider = ({ children }) => {
     toast.success('파일이 성공적으로 업로드되었습니다.', { style: { background: 'var(--bg-surface)', color: 'var(--text-primary)', border: '1px solid var(--border-color)' } });
   };
 
+  const [isPremium, setIsPremium] = useState(false);
+
+  const upgradeToPremium = () => {
+    setIsPremium(true);
+  };
+
   const removeFile = (id) => {
     setFiles(files.filter(f => f.id !== id));
     toast.success('파일이 삭제되었습니다.', { style: { background: 'var(--bg-surface)', color: 'var(--text-primary)', border: '1px solid var(--border-color)' } });
@@ -137,6 +143,7 @@ export const TeamProvider = ({ children }) => {
   return (
     <TeamContext.Provider value={{
       currentUser, login, logout, updateProfile,
+      isPremium, upgradeToPremium,
       members,
       tasks, addTask, updateTaskStatus, reorderTasks,
       events, addEvent,
