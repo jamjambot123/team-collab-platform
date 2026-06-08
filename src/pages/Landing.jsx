@@ -35,7 +35,7 @@ const Landing = () => {
             <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', marginBottom: '3rem', lineHeight: '1.6' }}>
               흩어져 있는 도구들을 하나로 모았습니다. <br/>일정 관리, 업무 분담, 자료 공유, 참여도 분석까지 CollabHub에서 한 번에 해결하세요.
             </p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '1.5rem' }}>
               <button className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }} onClick={() => navigate('/login')}>
                 무료로 시작하기 <ArrowRight size={20} />
               </button>
@@ -43,6 +43,14 @@ const Landing = () => {
                 데모 영상 보기
               </button>
             </div>
+            
+            <button 
+              className="btn btn-outline" 
+              style={{ background: 'rgba(139, 92, 246, 0.1)', color: '#a78bfa', borderColor: 'rgba(139, 92, 246, 0.3)', padding: '0.75rem 1.5rem', borderRadius: '99px', fontSize: '0.9rem' }}
+              onClick={() => navigate('/instructor')}
+            >
+              👨‍🏫 B2B 교육기관용: 교수/조교 관전 모드 체험하기
+            </button>
           </div>
         </section>
 

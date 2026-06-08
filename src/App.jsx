@@ -10,6 +10,7 @@ import Files from './pages/Files';
 import Analytics from './pages/Analytics';
 import Settings from './pages/Settings';
 import Login from './pages/Login';
+import InstructorDashboard from './pages/InstructorDashboard';
 import { useTeam, TeamProvider } from './context/TeamContext';
 
 const AppRoutes = () => {
@@ -25,6 +26,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={currentUser ? <Navigate to="/app/dashboard" replace /> : <Login />} />
+        <Route path="/instructor" element={<InstructorDashboard />} />
         
         <Route path="/app" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
           <Route index element={<Navigate to="dashboard" replace />} />
